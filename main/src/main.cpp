@@ -19,7 +19,6 @@ int MAIN(int argc, char** argv) {
   return EXIT_SUCCESS;
 }
 
-
 // just some function to have something that can be test
 #include <exception>
 
