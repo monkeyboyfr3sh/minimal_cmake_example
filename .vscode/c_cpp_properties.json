@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/main/inc/**",
                 "${workspaceFolder}/main/src/**",
-                "${workspaceFolder}/main/**"
+                "${workspaceFolder}/main/**",
+                "/usr/local/include/opencv4/**"
             ],
             "defines": [],
             "compilerPath": "/usr/lib/ccache/gcc",

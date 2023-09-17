@@ -1,20 +1,24 @@
 # Use the official Ubuntu base image
 FROM ubuntu:latest
 
+# Define an ARG with a default value of .
+ARG HOST_DIR_PATH=.
+
 # Update the package list, install necessary tools, and Nano
 RUN apt-get update && apt-get install -y \
     nano \
     git \
     cmake \
-    build-essential
+    build-essential \
+    curl
 
 # Clone the OpenCV repository
 RUN git clone https://github.com/opencv/opencv.git
 
 # Build and install OpenCV in the environment
-RUN mkdir -p /opencv/build && \
-    cd /opencv/build && \
-    cmake ../opencv && \
+RUN mkdir -p opencv/build && \
+    cd opencv/build/ && \
+    cmake .. && \
     make -j4 && \
     make install
 
