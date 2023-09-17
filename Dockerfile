@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     git \
     cmake \
     build-essential \
+    libgtk2.0-dev \
+    pkg-config \
     curl
 
 # Clone the OpenCV repository
