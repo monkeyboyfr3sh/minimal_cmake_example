@@ -28,15 +28,15 @@ RUN apt-get update && apt-get install -y \
 ####################################
 # Setup OpenCV #####################
 ####################################
-# # Clone the OpenCV repository
-# RUN git clone https://github.com/opencv/opencv.git
+# Clone the OpenCV repository
+RUN git clone https://github.com/opencv/opencv.git
 
-# # Build and install OpenCV in the environment
-# RUN mkdir -p opencv/build && \
-#     cd opencv/build/ && \
-#     cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_GTK=ON -D WITH_OPENGL=ON .. && \
-#     make -j8 && \
-#     make install
+# Build and install OpenCV in the environment
+RUN mkdir -p opencv/build && \
+    cd opencv/build/ && \
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_GTK=ON -D WITH_OPENGL=ON .. && \
+    make -j8 && \
+    make install
 
 ####################################
 # Setup Qt #########################
