@@ -3,6 +3,7 @@ FROM ubuntu:latest
 
 # Define an ARG with a default value of .
 ARG HOST_DIR_PATH=.
+ARG APP_DIR=/root/
 
 # Update the package list, install necessary tools, and Nano
 RUN apt-get update && apt-get install -y \
@@ -44,7 +45,11 @@ ARG QT_MODULES=all
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
 ARG QT_ARCH=
-RUN aqt install --outputdir /opt/qt ${QT} ${QT_HOST} ${QT_TARGET} ${QT_ARCH} -m ${QT_MODULES}
+RUN aqt install-qt \
+    ${QT_HOST} ${QT_TARGET} \
+    -O /opt/qt \
+    ${QT} \ 
+    -m ${QT_MODULES}
 
 ENV PATH /opt/qt/${QT}/gcc_64/bin:$PATH
 ENV QT_PLUGIN_PATH /opt/qt/${QT}/gcc_64/plugins/
@@ -55,10 +60,10 @@ ENV QML2_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 RUN mkdir -p /root/app
 
 # Copy the content of the host directory into the container
-COPY $HOST_DIR_PATH /root/app/
+COPY ${HOST_DIR_PATH} /root/app
 
 # Download an image
-RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > /root/app/test/image.png
+RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > ${APP_DIR}/test/image.png
 
 # Start a shell when the container runs
 CMD ["bash"]
