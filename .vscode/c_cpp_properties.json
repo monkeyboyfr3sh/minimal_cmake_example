@@ -7,7 +7,8 @@
                 "${workspaceFolder}/main/inc/**",
                 "${workspaceFolder}/main/src/**",
                 "${workspaceFolder}/main/**",
-                "/usr/local/include/opencv4/**"
+                "/usr/local/include/opencv4/**",
+                "/opt/qt/5.12.9/gcc_64/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/lib/ccache/gcc",

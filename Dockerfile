@@ -39,7 +39,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
 
 RUN pip3 install aqtinstall
 
-ARG QT=5.12.9
+ARG QT=6.2.0
 ARG QT_MODULES=all
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
