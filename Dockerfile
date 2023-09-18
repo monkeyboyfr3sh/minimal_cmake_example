@@ -17,16 +17,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     unzip
 
-# # Install Qt 6 dependencies
-# RUN apt-get install -y \
-#     libxcb-xinerama0 \
-#     libxcb-xinerama0-dev \
-#     libxkbcommon-x11-0 \
-#     libxkbcommon-x11-dev \
-#     libxkbcommon-dev \
-#     libxkbcommon-x11-0 \
-#     libxkbcommon-x11-dev
-
 # # Clone the OpenCV repository
 # RUN git clone https://github.com/opencv/opencv.git
 
@@ -37,7 +27,7 @@ RUN apt-get update && apt-get install -y \
 #     make -j8 && \
 #     make install
 
-# Setup Qt5.9
+# Setup Qt5.12.9
 RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
@@ -50,7 +40,7 @@ RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
 RUN pip3 install aqtinstall
 
 ARG QT=5.12.9
-ARG QT_MODULES=
+ARG QT_MODULES=all
 ARG QT_HOST=linux
 ARG QT_TARGET=desktop
 ARG QT_ARCH=
@@ -61,14 +51,14 @@ ENV QT_PLUGIN_PATH /opt/qt/${QT}/gcc_64/plugins/
 ENV QML_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 ENV QML2_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 
-# # Create a directory in the container to copy host directory content
-# RUN mkdir -p /root/app
+# Create a directory in the container to copy host directory content
+RUN mkdir -p /root/app
 
-# # Copy the content of the host directory into the container
-# COPY $HOST_DIR_PATH /root/app/
+# Copy the content of the host directory into the container
+COPY $HOST_DIR_PATH /root/app/
 
-# # Download an image
-# RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > /root/app/test/image.png
+# Download an image
+RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > /root/app/test/image.png
 
-# # Start a shell when the container runs
-# CMD ["bash"]
+# Start a shell when the container runs
+CMD ["bash"]

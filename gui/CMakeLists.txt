@@ -5,26 +5,26 @@ project( gui )
 # include_directories( ${OpenCV_INCLUDE_DIRS} )
 find_package (Qt5 REQUIRED COMPONENTS Core Widgets Network)
 
-# # Set the sources, headers, and data variables
-# set(sources
-#     src/main.cpp
-# )
+# Set the sources, headers, and data variables
+set(sources
+    gui.cpp
+)
 
-# set(headers
-#     inc/main.h
-# )
+set(headers
+)
 
-# set(data
-#     resources/resource1
-# )
+set(data
+)
 
 # # Create the main executable target
-# add_executable(main ${sources} ${data})
+add_executable(gui ${sources} ${data})
+
 # target_link_libraries( main ${OpenCV_LIBS} )
+target_link_libraries(Qt5::Core Qt5::Widgets Qt5::Network)
 
-# # Add compiler options and include directories
-# target_compile_options(main PUBLIC -std=c++1y -Wall -Wfloat-conversion)
-# target_include_directories(main PUBLIC inc)
+# Add compiler options and include directories
+target_compile_options(gui PUBLIC -std=c++1y -Wall -Wfloat-conversion)
+target_include_directories(gui PUBLIC inc)
 
-# # Copy resource files to the build directory
-# file(COPY ${data} DESTINATION resources)
+# Copy resource files to the build directory
+file(COPY ${data} DESTINATION resources)
