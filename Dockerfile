@@ -1,11 +1,17 @@
-# Use the official Ubuntu base image
-FROM ubuntu:latest
-
-# Define an ARG with a default value of .
+####################################
+# Script Args ######################
+####################################
 ARG HOST_DIR_PATH=.
 ARG APP_DIR=/root/
 
-# Update the package list, install necessary tools, and Nano
+####################################
+# Get Host #########################
+####################################
+FROM ubuntu:latest
+
+####################################
+# Get Tools ########################
+####################################
 RUN apt-get update && apt-get install -y \
     nano \
     git \
@@ -18,6 +24,10 @@ RUN apt-get update && apt-get install -y \
     wget \
     unzip
 
+
+####################################
+# Setup OpenCV #####################
+####################################
 # # Clone the OpenCV repository
 # RUN git clone https://github.com/opencv/opencv.git
 
@@ -28,7 +38,9 @@ RUN apt-get update && apt-get install -y \
 #     make -j8 && \
 #     make install
 
-# Setup Qt5.12.9
+####################################
+# Setup Qt #########################
+####################################
 RUN apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git \
     cmake \
@@ -56,6 +68,9 @@ ENV QT_PLUGIN_PATH /opt/qt/${QT}/gcc_64/plugins/
 ENV QML_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 ENV QML2_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 
+####################################
+# Setup Project Directory ##########
+####################################
 # Create a directory in the container to copy host directory content
 RUN mkdir -p /root/app
 
@@ -64,6 +79,3 @@ COPY ${HOST_DIR_PATH} /root/app
 
 # Download an image
 RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > ${APP_DIR}/test/image.png
-
-# Start a shell when the container runs
-CMD ["bash"]
