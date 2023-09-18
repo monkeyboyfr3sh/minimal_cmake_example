@@ -2,7 +2,7 @@
 # Script Args ######################
 ####################################
 ARG HOST_DIR_PATH=.
-ARG APP_DIR=/root/
+ARG APP_DIR=/root/app
 
 ####################################
 # Get Host #########################
@@ -71,11 +71,10 @@ ENV QML2_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 ####################################
 # Setup Project Directory ##########
 ####################################
-# Create a directory in the container to copy host directory content
-RUN mkdir -p /root/app
 
-# Copy the content of the host directory into the container
-COPY ${HOST_DIR_PATH} /root/app
+# Copy host source into container
+RUN mkdir -p ${APP_DIR}
+COPY ${HOST_DIR_PATH} ${APP_DIR}
 
-# Download an image
+# Download an image into the container
 RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > ${APP_DIR}/test/image.png
