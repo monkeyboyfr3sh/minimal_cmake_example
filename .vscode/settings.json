@@ -4,6 +4,7 @@
         "qtgui": "cpp",
         "qtguidepends": "cpp",
         "qtcore": "cpp",
-        "qapplication": "cpp"
+        "qapplication": "cpp",
+        "qmessagebox": "cpp"
     }
 }

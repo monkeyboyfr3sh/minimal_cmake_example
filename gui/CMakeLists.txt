@@ -6,7 +6,7 @@ project( gui )
 # include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Find the Qt library and modules
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 # Set the sources, headers, and data variables
 set(sources
@@ -25,7 +25,7 @@ add_executable(${PROJECT_NAME} ${sources} ${data})
 # target_link_libraries( main ${OpenCV_LIBS} )
 
 # Link the Qt5 libraries to your executable
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt6::Widgets)
 
 # Add compiler options and include directories
 target_compile_options(${PROJECT_NAME} PUBLIC -std=c++1y -Wall -Wfloat-conversion)
