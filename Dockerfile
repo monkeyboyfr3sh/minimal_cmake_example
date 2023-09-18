@@ -73,8 +73,8 @@ ENV QML2_IMPORT_PATH /opt/qt/${QT}/gcc_64/qml/
 ####################################
 
 # Copy host source into container
-RUN mkdir -p ${APP_DIR}
-COPY ${HOST_DIR_PATH} ${APP_DIR}
+RUN mkdir -p /root/app
+COPY ${HOST_DIR_PATH} /root/app/
 
 # Download an image into the container
-RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > ${APP_DIR}/test/image.png
+RUN curl https://www.python.org/static/apple-touch-icon-144x144-precomposed.png > /root/app/test/image.png
